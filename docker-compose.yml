@@ -1,0 +1,15 @@
+services:
+  file-relay:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ephemeral-file-relay
+    restart: unless-stopped
+    ports:
+      - "8091:8080"
+    environment:
+      UPLOAD_TOKEN: ${UPLOAD_TOKEN}
+      TTL_SECONDS: ${TTL_SECONDS:-600}
+      MAX_FILE_MB: ${MAX_FILE_MB:-15}
+      MAX_ENTRIES: ${MAX_ENTRIES:-500}
+      PUBLIC_BASE: ${PUBLIC_BASE}
