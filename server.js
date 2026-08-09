@@ -124,7 +124,7 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, {
       'Content-Type': entry.contentType,
       'Content-Length': entry.buffer.length,
-      'Cache-Control': 'no-store',
+      'Cache-Control': 'public, s-maxage=300, max-age=60',
       'Access-Control-Allow-Origin': '*',
     });
     return res.end(entry.buffer);
